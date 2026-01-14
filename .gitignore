@@ -1,0 +1,50 @@
+# Environment variables
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data files
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Database - Include the main database for portfolio
+!data/database/football.db
+
+# Models - Users should train their own model (but include metadata as documentation)
+models/*.pkl
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Archive - Old code (not for GitHub)
+archive/
+
+# Temporary files
+*.log
+*.tmp
+data/football_analytics.db
