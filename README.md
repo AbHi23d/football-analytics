@@ -151,9 +151,18 @@ football-analytics/
 │   ├── 02_feature_engineering.ipynb
 │   └── 03_model_development.ipynb
 │
-├── utils.py                         # Feature engineering functions
-├── train_model.py                   # Production training script
-├── app_simple.py                    # Streamlit dashboard
+├── scripts/
+│   ├── app_simple.py                # Streamlit dashboard
+│   ├── train_model.py               # Production training script
+│   ├── utils.py                     # Feature engineering functions
+│   └── generate_tableau_exports.py  # SQL transformations for BI
+│
+├── tableau_exports/                 # BI-ready CSV files
+│   ├── matches.csv
+│   ├── team_statistics.csv
+│   ├── season_summary.csv
+│   └── head_to_head.csv
+│
 └── README.md                        # This file
 ```
 
