@@ -8,7 +8,6 @@ Complete setup instructions to get the project running on your machine.
 
 - **Python 3.8+** installed
 - **Git** installed
-- **10 GB** free disk space (for dependencies + data)
 
 ---
 
@@ -126,20 +125,6 @@ git lfs pull  # Download large files
 
 ---
 
-## Development Setup
-
-### Running Tests (if available)
-```bash
-pytest tests/
-```
-
-### Code Formatting
-```bash
-black .
-flake8 .
-```
-
----
 
 ## Next Steps
 
