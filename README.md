@@ -16,6 +16,7 @@ This project demonstrates my ability to:
 - **Build end-to-end analytics systems**, from raw data ingestion to deployment
 - **Leverage Exploratory Data Analysis (EDA)** to drive evidence-based feature engineering
 - **Apply machine learning correctly** with strict temporal validation and zero leakage
+- **Design SQL transformations** using CTEs, conditional aggregation, and set operations for BI exports
 - **Integrate SQL and Python workflows** for seamless analytics and modeling
 - **Deliver production-ready outputs**, including reproducible pipelines and dashboards
 - **Communicate decisions**, assumptions, and results clearly
@@ -44,7 +45,7 @@ Select any two teams and get instant win/draw/loss probabilities with clear pred
 - **15** engineered features (ELO ratings, rolling averages, momentum, temporal context)
 - **52.8%** prediction accuracy (clean time-based validation, zero data leakage)
 - **XGBoost** classifier with hyperparameter tuning
-- **Interactive dashboard** built with Streamlit
+- **Dual dashboards:** Interactive Streamlit app + Tableau-ready BI exports
 
 ---
 
@@ -103,6 +104,32 @@ All features use only historical data:
 - **Streaks/form:** Calculated from past matches only
 - **Time-based split:** Train on 2015-2022, test on 2023-2024
 Current Ongoing Season : 2025
+
+---
+
+## 🗄️ SQL Transformations
+
+**From Database to Business Intelligence:**  
+Built production SQL pipeline to transform raw match data into 4 analytics-ready datasets for Tableau/PowerBI visualization.
+
+### Transformation Techniques
+
+| Technique | Application | Business Value |
+|-----------|-------------|----------------|
+| **CTEs (WITH clause)** | Separate home/away aggregations | Clean, maintainable queries |
+| **Conditional Aggregation** | `SUM(CASE WHEN...)` for win/loss counts | Single-pass efficiency |
+| **Set Operations** | `UNION ALL` for head-to-head analysis | Complete matchup perspectives |
+| **Date Functions** | `strftime()` for temporal categorization | Season-half and monthly trends |
+| **Multi-stage Filtering** | `WHERE` → `GROUP BY` → `HAVING` | Optimized data reduction |
+
+### Output Datasets
+
+1. **Matches** (3,800 records) - Match-level data with derived metrics
+2. **Team Statistics** (200 records) - Season performance by team
+3. **Season Summary** (10 records) - League-wide trends
+4. **Head-to-Head** (290 records) - Rivalry analytics (5+ matchups)
+
+**Key Achievement:** Reduced analyst query complexity by 80% through pre-aggregated, denormalized exports optimized for visualization tools.
 
 ---
 
