@@ -22,11 +22,11 @@ data/processed/*
 !data/raw/.gitkeep
 !data/processed/.gitkeep
 
-# Database - Include the main database for portfolio
-!data/database/football.db
+# Database (football.db is committed intentionally for Streamlit Cloud deploy)
+# *.db  -- intentionally tracked
 
-# Models - Users should train their own model (but include metadata as documentation)
-models/*.pkl
+# Models (Tracked intentionally for Streamlit Cloud)
+# models/saved/*
 
 # IDE
 .vscode/
@@ -41,10 +41,11 @@ Thumbs.db
 # Streamlit
 .streamlit/secrets.toml
 
-# Archive - Old code (not for GitHub)
+# Clutter — keep GitHub repo clean for recruiters
 archive/
-
-# Temporary files
-*.log
-*.tmp
-data/football_analytics.db
+coding files/
+Tableau Workbook/
+tableau_exports/
+setup_database.py
+generate_standings.py
+notebooks/engineered_features.csv

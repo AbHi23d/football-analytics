@@ -1,271 +1,60 @@
-# ⚽ Football Analytics Platform
+# Premier League Analytics Platform
 
-> *End-to-end data science project predicting Premier League match outcomes*
+[![Python](https://img.shields.io/badge/Python-3.9-blue?style=flat-square)](https://python.org)
+[![Streamlit](https://img.shields.io/badge/Streamlit-1.35+-red?style=flat-square)](https://streamlit.io)
+[![SQL](https://img.shields.io/badge/SQL-Portfolio-orange?style=flat-square)](sql_analysis.md)
 
-This project demonstrates a complete data science workflow, from data collection to deployment. It uses XGBoost to predict football match outcomes with 52.8% accuracy through strict temporal validation.
+Hi! Thanks for stopping by. This is an end-to-end data analytics and machine learning project I built to analyze the English Premier League. 
 
-![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.29+-red.svg)
-![ML](https://img.shields.io/badge/ML-XGBoost-green.svg)
+I wanted to build something that handles the entire data lifecycle: from pulling raw API data, cleaning it, and storing it in a relational database, to building predictive models and serving everything in an interactive web dashboard.
 
----
-
-## 🎯 For Recruiters & Hiring Managers
-
-This project demonstrates my ability to:
-- **Build end-to-end analytics systems**, from raw data ingestion to deployment
-- **Leverage Exploratory Data Analysis (EDA)** to drive evidence-based feature engineering
-- **Apply machine learning correctly** with strict temporal validation and zero leakage
-- **Design SQL transformations** using CTEs, conditional aggregation, and set operations for BI exports
-- **Integrate SQL and Python workflows** for seamless analytics and modeling
-- **Deliver production-ready outputs**, including reproducible pipelines and dashboards
-- **Communicate decisions**, assumptions, and results clearly
-
-**Scope:** 3,800+ matches · 10 seasons · 15 engineered features · unseen future evaluation
+> **[🚀 Check out the Live Dashboard](https://share.streamlit.io/abhidhindsa/football-analytics)**  
+> **[🗄️ View my SQL Portfolio (14 complex queries)](sql_analysis.md)**
 
 ---
 
-## 📸 System Demonstration
+## 📊 What's inside?
 
-### Dashboard Overview
-Interactive metrics and visualizations showing match statistics and trends.
+The dashboard is split into three main tools:
+- **Match Predictor**: A machine learning ensemble (XGBoost + Random Forest) that predicts win probabilities and scorelines for any matchup.
+- **Team Analysis**: Deep dives into specific clubs to see their recent form, home/away splits, and head-to-head records.
+- **League Standings**: Historical tables for the last 10 seasons, complete with European qualification zones.
 
-![Dashboard](docs/screenshots/dashboard.png)
+*Note for recruiters: If you're looking for my database skills, check out the [`sql_analysis.md`](sql_analysis.md) file in this repo to see the advanced SQL (CTEs, Window Functions, etc.) I wrote to analyze the dataset.*
 
-### Match Predictor
-Select any two teams and get instant win/draw/loss probabilities with clear predictions.
+## 💾 The Data
 
-![Match Predictor](docs/screenshots/match_predictor.png)
+I built the dataset from scratch using the free tier of the Football-Data.org API. 
+- **Scope**: 10 full Premier League seasons (2015–2025)
+- **Size**: 3,800 finished matches and 34 unique clubs
+- **Storage**: Cleaned and stored in a local SQLite database (`football.db`)
 
----
+## 🧠 How the ML works
 
-## 📊 Project Overview
+I wanted to keep the modeling grounded in reality. The predictions are driven by 17 custom features I engineered for each match, including:
+- Dynamic ELO ratings
+- Rolling form scores (last 5 games)
+- Home/Away goal averages
+- Head-to-head history
 
-- **3,800** Premier League matches (2015-2025, 10 complete seasons)
-- **15** engineered features (ELO ratings, rolling averages, momentum, temporal context)
-- **52.8%** prediction accuracy (clean time-based validation, zero data leakage)
-- **XGBoost** classifier with hyperparameter tuning
-- **Dual dashboards:** Interactive Streamlit app + Tableau-ready BI exports
-
----
-
-## 📈 Model Performance
-
-### Results
-
-| Metric | Value |
-|--------|-------|
-| **Test Accuracy** | 52.8% |
-| **Cross-Validation** | 47.4% ± 2.8% |
-| **Baseline** | 43.4% (always predict home) |
-| **Improvement** | +9.3 percentage points |
-| **Algorithm** | XGBoost Classifier |
-
-### Performance Context
-
-
-- **Outperforms random probability** (33%) by 18.8 percentage points
-- **Beats naive baseline** by 9.3 points
-- **Honest evaluation** with strict temporal validation
-- **No data leakage** - provably clean features
-- **Benchmarks competitively against published research** (53-58% range)
-
-Football is inherently unpredictable. Our model demonstrates real predictive capability on unseen future data.
+The model achieves around ~55% accuracy on match outcomes (Win/Draw/Loss), which is right in line with the established benchmark for predicting a highly unpredictable sport like football.
 
 ---
 
-## 🔬 Feature Engineering
+## 🛠️ Tech Stack
 
-**From Raw Data to Features:**
-The database contains basic match statistics (17 columns). We engineered 15 predictive features:
+- **Data Processing**: Python, Pandas
+- **Machine Learning**: scikit-learn, XGBoost
+- **Database**: SQLite, SQL
+- **Frontend & Viz**: Streamlit, Plotly
 
-### Top 10 Features by Importance
+## 💻 Running it locally
 
-| Rank | Feature | Importance | Type |
-|------|---------|------------|------|
-| 1 | elo_diff | 0.127 | Standard |
-| 2 | away_goals_avg | 0.067 | **Custom** |
-| 3 | h2h_home_wins | 0.066 | Standard |
-| 4 | rest_days | 0.066 | **Custom** |
-| 5 | season_progress | 0.066 | **Custom** |
-| 6 | home_goals_avg | 0.065 | **Custom** |
-| 7 | away_clean_sheets | 0.064 | **Custom** |
-| 8 | away_win_streak | 0.063 | **Custom** |
-| 9 | home_conceded_avg | 0.063 | **Custom** |
-| 10 | form_diff | 0.063 | Standard |
+If you want to spin this up on your own machine, I've included the pre-populated database in the repo so you don't have to worry about API keys or rate limits.
 
-**12 of 15 features (80%)** are custom implementations beyond basic statistics.
-
-### Data Leakage Prevention
-
-All features use only historical data:
-- **Rolling averages:** `.shift(1)` ensures no current match data
-- **ELO ratings:** Updated sequentially after each match
-- **Streaks/form:** Calculated from past matches only
-- **Time-based split:** Train on 2015-2022, test on 2023-2024
-Current Ongoing Season : 2025
-
----
-
-## 🗄️ SQL Transformations
-
-**From Database to Business Intelligence:**  
-Built production SQL pipeline to transform raw match data into 4 analytics-ready datasets for Tableau/PowerBI visualization.
-
-### Transformation Techniques
-
-| Technique | Application | Business Value |
-|-----------|-------------|----------------|
-| **CTEs (WITH clause)** | Separate home/away aggregations | Clean, maintainable queries |
-| **Conditional Aggregation** | `SUM(CASE WHEN...)` for win/loss counts | Single-pass efficiency |
-| **Set Operations** | `UNION ALL` for head-to-head analysis | Complete matchup perspectives |
-| **Date Functions** | `strftime()` for temporal categorization | Season-half and monthly trends |
-| **Multi-stage Filtering** | `WHERE` → `GROUP BY` → `HAVING` | Optimized data reduction |
-
-### Output Datasets
-
-1. **Matches** (3,800 records) - Match-level data with derived metrics
-2. **Team Statistics** (200 records) - Season performance by team
-3. **Season Summary** (10 records) - League-wide trends
-4. **Head-to-Head** (290 records) - Rivalry analytics (5+ matchups)
-
-**Key Achievement:** Reduced analyst query complexity by 80% through pre-aggregated, denormalized exports optimized for visualization tools.
-
----
-
-## 📁 Project Structure
-
-```
-football-analytics/
-├── data/
-│   └── database/
-│       └── football.db              # 3,800 matches (2015-2024)
-│
-├── models/
-│   ├── simple_model.pkl             # Trained XGBoost (52.8%)
-│   ├── features.json                # 15 feature names
-│   └── model_metadata.json          # Training metrics
-│
-├── notebooks/
-│   ├── 01_exploratory_data_analysis.ipynb
-│   ├── 02_feature_engineering.ipynb
-│   └── 03_model_development.ipynb
-│
-├── scripts/
-│   ├── app_simple.py                # Streamlit dashboard
-│   ├── train_model.py               # Production training script
-│   ├── utils.py                     # Feature engineering functions
-│   └── generate_tableau_exports.py  # SQL transformations for BI
-│
-├── tableau_exports/                 # BI-ready CSV files
-│   ├── matches.csv
-│   ├── team_statistics.csv
-│   ├── season_summary.csv
-│   └── head_to_head.csv
-│
-└── README.md                        # This file
-```
-
-### 🗄️ Data Schema
-The project uses **SQLite** to simulate a production-grade data store, ensuring type safety and scalability beyond simple CSVs.
-
-**Table: `matches`**
-| Column | Type | Description |
-| :--- | :--- | :--- |
-| `id` | INTEGER | Primary Key |
-| `competition` | TEXT | League (e.g., 'Premier League') |
-| `season` | INTEGER | Season start year (e.g., 2023) |
-| `utc_date` | TIMESTAMP | Match kick-off time (UTC) |
-| `home_team_name` | TEXT | Home team name |
-| `away_team_name` | TEXT | Away team name |
-| `home_score` | INTEGER | Goals scored by home team |
-| `away_score` | INTEGER | Goals scored by away team |
-| `winner` | TEXT | Target Variable ('HOME_TEAM', 'AWAY_TEAM', 'DRAW') |
-
-
----
-
-## 💻 Technical Stack
-
-### Core Analytics & Modeling
-- **Python 3.8+ with pandas** for data processing and feature engineering
-- **scikit-learn and XGBoost** for model training, evaluation, and validation
-- **SQLite** for structured data storage and analytical querying
-
-### Analysis & Experimentation
-- **Jupyter Notebooks** for exploratory analysis, feature validation, and experimentation
-
-### Visualization & Delivery
-- **Streamlit** for interactive, user-facing dashboards
-- **Plotly** for dynamic visualizations
-- **Matplotlib / Seaborn** for exploratory and diagnostic plots
-
----
-
-## 🏗️ Installation & Usage
-
-### Prerequisites
-- Python 3.8+
-- Virtual environment recommended
-
-### Quick Start
 ```bash
-# Clone repository
-git clone https://github.com/yourusername/football-analytics.git
+git clone https://github.com/AbHi23d/football-analytics.git
 cd football-analytics
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-# Install dependencies
 pip install -r requirements.txt
-
-# Run dashboard
-streamlit run app_simple.py
+streamlit run dashboard/app.py
 ```
-The database is included, so no data fetching required!
-
----
-
-## 🚧 Future Enhancements
-
-**Production Readiness:**
-- Deploy to cloud (Streamlit Cloud/Heroku)
-- Automate data updates
-- CI/CD pipeline
-- Model versioning
-
-**Model Improvements:**
-- Player-level statistics
-- External data (weather, injuries)
-- Team Analytics
-- New leagues (La Liga, Bundesliga and more!)
-
-
----
-
-## 📖 Documentation
-
-- `SETUP_GUIDE.md` - Complete installation and setup instructions
-- `LICENSE` - MIT License for open source use
-
----
-
-## 📧 Connect
-
-**Built by:** [Abhinav Dhindsa]
-**Contact:** [dhindsaabhinav@gmail.com]  
-**LinkedIn:** [www.linkedin.com/in/abhidhindsa]
-
----
-
-## 📄 License
-
-MIT License - see [LICENSE](LICENSE) for details
-
----
-
-**This project demonstrates skills applicable to data science roles.**
-
-*Last Updated: January 2026*
