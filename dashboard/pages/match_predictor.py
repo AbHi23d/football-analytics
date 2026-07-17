@@ -23,9 +23,15 @@ with c1:
 # Remove border from expander
 st.markdown("""
 <style>
-[data-testid="stExpander"] {
+div[data-testid="stExpander"] {
     border: none !important;
     box-shadow: none !important;
+}
+div[data-testid="stExpander"] details {
+    border: none !important;
+}
+div[data-testid="stExpander"] summary {
+    border: none !important;
 }
 </style>
 """, unsafe_allow_html=True)
