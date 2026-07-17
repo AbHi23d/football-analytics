@@ -20,7 +20,7 @@ with c1:
     st.title("Match Predictor")
     st.markdown("Predict the outcome of any Premier League fixture.")
 
-# Remove border from expander
+# Custom styling for the expander to look like an interactive button
 st.markdown("""
 <style>
 div[data-testid="stExpander"] {
@@ -32,6 +32,16 @@ div[data-testid="stExpander"] details {
 }
 div[data-testid="stExpander"] summary {
     border: none !important;
+    background-color: #37003C; 
+    border-radius: 8px;
+    padding: 10px 15px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+div[data-testid="stExpander"] summary:hover {
+    background-color: #4b0052;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 </style>
 """, unsafe_allow_html=True)
