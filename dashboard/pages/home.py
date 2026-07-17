@@ -44,7 +44,7 @@ st.markdown(f"""
 <div class="pg-stat-strip">
     <div class="pg-stat">
         <div class="pg-stat-number">{match_count:,}</div>
-        <div class="pg-stat-label">Matches in dataset</div>
+        <div class="pg-stat-label">Total matches</div>
     </div>
     <div class="pg-stat">
         <div class="pg-stat-number">10</div>
