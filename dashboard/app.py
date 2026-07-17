@@ -39,8 +39,12 @@ pg = st.navigation([
     st.Page("pages/league_standings.py", title="League Standings", icon="🏆")
 ])
 
-st.sidebar.write("\n" * 8)
-st.sidebar.markdown("### 👨‍💻 Built by Abhi")
-st.sidebar.markdown("[LinkedIn](https://www.linkedin.com/in/abhidhindsa) &nbsp;&middot;&nbsp; [GitHub](https://github.com/AbHi23d)")
+st.sidebar.markdown("""
+<div style="margin-top: 45vh;">
+    <h3 style="margin-bottom: 5px;">👨‍💻 Built by Abhi</h3>
+    <a href="https://www.linkedin.com/in/abhidhindsa" target="_blank" style="text-decoration: none; font-weight: bold;">LinkedIn</a> &nbsp;&middot;&nbsp; 
+    <a href="https://github.com/AbHi23d" target="_blank" style="text-decoration: none; font-weight: bold;">GitHub</a>
+</div>
+""", unsafe_allow_html=True)
 
 pg.run()
