@@ -32,14 +32,22 @@ div[data-testid="stExpander"] details {
 }
 div[data-testid="stExpander"] summary {
     border: none !important;
-    background-color: #37003C; 
+    background-color: #37003C !important;
+    color: #FFFFFF !important;
     border-radius: 8px;
-    padding: 10px 15px;
+    padding: 8px 16px;
     transition: all 0.2s ease;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    width: max-content !important;
+    display: inline-flex !important;
+    align-items: center;
+}
+div[data-testid="stExpander"] summary p, div[data-testid="stExpander"] summary span, div[data-testid="stExpander"] summary svg {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
 }
 div[data-testid="stExpander"] summary:hover {
-    background-color: #4b0052;
+    background-color: #4b0052 !important;
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
