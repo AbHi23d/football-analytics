@@ -42,7 +42,7 @@ try:
         team_names = {team['name']: team['id'] for team in teams}
         sorted_names = sorted(team_names.keys())
 
-        with st.container(border=True):
+        with st.container(border=False):
             col1, col2 = st.columns(2)
             with col1:
                 home_team_name = st.selectbox("Home Team", sorted_names, key="home_team")
