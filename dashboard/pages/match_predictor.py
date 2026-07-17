@@ -22,14 +22,14 @@ with c1:
 
 with st.expander("ℹ️ How does the AI work?"):
     st.markdown("""
-    **How it makes predictions:** We use an advanced AI technique called **Machine Learning** (combining Random Forest and XGBoost) to find hidden patterns in 10 years of historical Premier League data.
+    **How it makes predictions:** We use an ensemble **Machine Learning** model (combining Random Forest and XGBoost) to identify patterns in 10 years of historical Premier League data.
     
     **What data does it look at?** The model analyzes 17 unique data points for every match, including:
     - **Team Momentum:** Recent form and dynamically updated ELO ratings
     - **Attacking Threat:** Expected goals (xG) and average goals scored
     - **Historical Context:** Head-to-head records and home-field advantage
     
-    **Why is this better than guessing?** Instead of just looking at who is higher in the league table, the AI learns complex matchups—like how a team that struggles away from home might perform against a team with an incredible defense.
+    **Why is this better than guessing?** Instead of just looking at who is higher in the league table, the model learns complex matchups—like how a team that struggles away from home might perform against a team with an incredible defense.
     """)
 
 try:
