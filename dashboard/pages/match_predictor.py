@@ -22,14 +22,14 @@ with c1:
 
 with st.expander("ℹ️ How does the AI work?"):
     st.markdown("""
-    **Model Architecture:** We use an ensemble of **XGBoost** and **Random Forest** classification algorithms trained on 10 years of historical Premier League data.
+    **Data Foundation:** The predictor is built on 10 years of historical Premier League data, aggregated and transformed using advanced SQL pipelines.
     
-    **Features:** The model analyzes over 30 features per match, including:
+    **Analytical Features:** We engineered 17 key performance indicators (KPIs) per match, including:
     - **Recent Form:** Rolling 5-match win/loss/draw rates
-    - **Attacking/Defensive Stats:** Expected goals, clean sheets, and conversion rates
+    - **Attacking/Defensive Stats:** Expected goals (xG) and average goals scored
     - **Context:** Home-field advantage and historical head-to-head dominance
     
-    **Why it matters:** Unlike simple averages, our ensemble captures non-linear relationships (e.g., how a team with a weak away record performs against a high-pressing home team).
+    **Why it matters:** By analyzing these structured data points rather than relying on simple averages, we can generate statistically backed probabilities for any fixture.
     """)
 
 try:
