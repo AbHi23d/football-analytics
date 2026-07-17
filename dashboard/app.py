@@ -42,8 +42,8 @@ pg = st.navigation([
 st.sidebar.markdown("""
 <div style="margin-top: 45vh;">
     <h3 style="margin-bottom: 5px;">👨‍💻 Built by Abhi</h3>
-    <a href="https://www.linkedin.com/in/abhidhindsa" target="_blank" style="text-decoration: none; font-weight: bold; color: inherit;">LinkedIn</a> &nbsp;&middot;&nbsp; 
-    <a href="https://github.com/AbHi23d" target="_blank" style="text-decoration: none; font-weight: bold; color: inherit;">GitHub</a>
+    <a href="https://www.linkedin.com/in/abhidhindsa" target="_blank" style="text-decoration: none; font-weight: bold; color: #1c83e1;">LinkedIn</a> &nbsp;&middot;&nbsp; 
+    <a href="https://github.com/AbHi23d" target="_blank" style="text-decoration: none; font-weight: bold; color: #1c83e1;">GitHub</a>
 </div>
 """, unsafe_allow_html=True)
 
