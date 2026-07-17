@@ -20,36 +20,28 @@ with c1:
     st.title("Match Predictor")
     st.markdown("Predict the outcome of any Premier League fixture.")
 
-# Custom styling for the expander to look like an interactive button
+# Custom styling for a clean, minimalistic borderless expander
 st.markdown("""
 <style>
 div[data-testid="stExpander"] {
     border: none !important;
     box-shadow: none !important;
+    background: transparent !important;
 }
 div[data-testid="stExpander"] details {
     border: none !important;
+    background: transparent !important;
 }
 div[data-testid="stExpander"] summary {
     border: none !important;
-    background-color: #37003C !important;
-    color: #FFFFFF !important;
-    border-radius: 8px;
-    padding: 8px 16px;
-    transition: all 0.2s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    width: max-content !important;
-    display: inline-flex !important;
-    align-items: center;
-}
-div[data-testid="stExpander"] summary p, div[data-testid="stExpander"] summary span, div[data-testid="stExpander"] summary svg {
-    color: #FFFFFF !important;
-    fill: #FFFFFF !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    padding-left: 0 !important;
+    padding-bottom: 0 !important;
 }
 div[data-testid="stExpander"] summary:hover {
-    background-color: #4b0052 !important;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    background: transparent !important;
+    opacity: 0.7;
 }
 </style>
 """, unsafe_allow_html=True)
