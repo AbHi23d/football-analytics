@@ -9,10 +9,18 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '../..'))
 # Load data
 try:
     from src.data_collection import DatabaseManager
+    import pandas as pd
     db = DatabaseManager()
     match_count = db.get_match_count()
+    
+    conn = db.get_connection()
+    club_count = pd.read_sql("SELECT count(DISTINCT team_id) as c FROM standings;", conn).iloc[0]['c']
+    goal_count = pd.read_sql("SELECT sum(home_score + away_score) as g FROM matches;", conn).iloc[0]['g']
+    conn.close()
 except Exception:
     match_count = 3800
+    club_count = 34
+    goal_count = 10754
 
 import base64
 
@@ -27,7 +35,7 @@ with c1:
     st.title("Premier League Analytics")
     st.markdown("2015 – 2025 · English Premier League · Built in Python & SQL")
 with c2:
-    st.markdown(f'<img src="data:image/svg+xml;base64,{logo_b64}" style="width: 140px; margin-top: 1rem;">', unsafe_allow_html=True)
+    st.markdown(f'<img src="data:image/svg+xml;base64,{logo_b64}" style="width: 120px; float: right;">', unsafe_allow_html=True)
 
 st.write("")
 
@@ -43,12 +51,12 @@ st.markdown(f"""
         <div class="pg-stat-label">Seasons covered</div>
     </div>
     <div class="pg-stat">
-        <div class="pg-stat-number">40+</div>
+        <div class="pg-stat-number">{club_count}</div>
         <div class="pg-stat-label">Clubs tracked</div>
     </div>
     <div class="pg-stat">
-        <div class="pg-stat-number">5M+</div>
-        <div class="pg-stat-label">Data points</div>
+        <div class="pg-stat-number">{goal_count:,}</div>
+        <div class="pg-stat-label">Goals scored</div>
     </div>
 </div>
 """, unsafe_allow_html=True)
