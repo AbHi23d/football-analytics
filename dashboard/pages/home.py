@@ -35,7 +35,7 @@ with c1:
     st.title("Premier League Analytics")
     st.markdown("2015 – 2025 · English Premier League · Built in Python & SQL")
 with c2:
-    st.markdown(f'<img src="data:image/svg+xml;base64,{logo_b64}" style="width: 120px; float: right;">', unsafe_allow_html=True)
+    st.markdown(f'<div style="display: flex; justify-content: flex-end; align-items: center; height: 100%; padding-top: 1rem;"><img src="data:image/svg+xml;base64,{logo_b64}" style="width: 130px;"></div>', unsafe_allow_html=True)
 
 st.write("")
 
