@@ -20,7 +20,17 @@ with c1:
     st.title("Match Predictor")
     st.markdown("Predict the outcome of any Premier League fixture.")
 
-with st.expander("ℹ️ How does the AI work?"):
+# Remove border from expander
+st.markdown("""
+<style>
+[data-testid="stExpander"] {
+    border: none !important;
+    box-shadow: none !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
+with st.expander("ℹ️ Data & Methodology"):
     st.markdown("""
     **Data Foundation:** The predictor is built on 10 years of historical Premier League data, aggregated and transformed using advanced SQL pipelines.
     
