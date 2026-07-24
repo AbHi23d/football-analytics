@@ -44,10 +44,14 @@ st.sidebar.markdown("""
     <h3 style="margin-bottom: 5px;">👨‍💻 Built by Abhi</h3>
     <a href="https://www.linkedin.com/in/abhidhindsa" target="_blank" style="text-decoration: none; font-weight: bold; color: #1c83e1;">LinkedIn</a> &nbsp;&middot;&nbsp; 
     <a href="https://github.com/AbHi23d" target="_blank" style="text-decoration: none; font-weight: bold; color: #1c83e1;">GitHub</a>
-    <p style="font-size: 0.65rem; color: #888888; margin-top: 20px; line-height: 1.2;">
-        Disclaimer: This is a non-commercial, educational portfolio project. Not affiliated with or endorsed by the Premier League. All logos and trademarks belong to their respective owners.
-    </p>
 </div>
 """, unsafe_allow_html=True)
+
+with st.sidebar.expander("Legal"):
+    st.markdown("""
+        <p style="font-size: 0.75rem; color: #888888; line-height: 1.2; margin-bottom: 0;">
+            This is a non-commercial, educational portfolio project. Not affiliated with or endorsed by the Premier League. All logos belong to their respective owners.
+        </p>
+    """, unsafe_allow_html=True)
 
 pg.run()
