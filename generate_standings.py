@@ -83,11 +83,11 @@ def generate_standings():
             cursor.execute("""
                 INSERT INTO standings (
                     competition, season, position, team_id, team_name,
-                    played_games, won, draw, lost, points, goals_for, goals_against
-                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    played_games, won, draw, lost, points, goals_for, goals_against, goal_difference
+                ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
             """, (
                 row['competition'], row['season'], row['position'], row['team_id'], row['team_name'],
-                row['P'], row['W'], row['D'], row['L'], row['Pts'], row['GF'], row['GA']
+                row['P'], row['W'], row['D'], row['L'], row['Pts'], row['GF'], row['GA'], row['GD']
             ))
             
         conn.commit()
