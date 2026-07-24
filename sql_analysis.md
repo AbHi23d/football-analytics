@@ -29,7 +29,7 @@ I split the count into two CTEs (one for home, one for away) and joined them tog
 
 ```sql
 SELECT
-    season,
+    season || '/' || SUBSTR(CAST(season + 1 AS TEXT), 3, 2) AS season,
     COUNT(*)                                    AS total_matches,
     ROUND(AVG(home_score + away_score), 2)      AS avg_goals_per_match
 FROM matches
@@ -62,7 +62,7 @@ Home advantage is not equal across clubs. The top sides like Manchester City and
 
 ```sql
 SELECT
-    season,
+    season || '/' || SUBSTR(CAST(season + 1 AS TEXT), 3, 2) AS season,
     ROUND(
         SUM(CASE WHEN home_score > away_score THEN 1 ELSE 0 END) * 100.0
         / COUNT(*), 1
@@ -102,7 +102,7 @@ Scoring away from home is harder than it looks. This shows which teams managed i
 
 ```sql
 SELECT
-    season,
+    season || '/' || SUBSTR(CAST(season + 1 AS TEXT), 3, 2) AS season,
     COUNT(*)                                                                AS total_matches,
     SUM(CASE WHEN home_score + away_score >= 3 THEN 1 ELSE 0 END)          AS high_scoring,
     ROUND(
@@ -120,7 +120,7 @@ A rough measure of how open each season was. Not the most sophisticated metric b
 
 ```sql
 SELECT
-    season,
+    season || '/' || SUBSTR(CAST(season + 1 AS TEXT), 3, 2) AS season,
     MAX(points)                         AS first_place_pts,
     MIN(points)                         AS fourth_place_pts,
     MAX(points) - MIN(points)           AS gap_1st_to_4th
@@ -186,7 +186,7 @@ A straightforward join between standings and teams to pull club details alongsid
 ```sql
 SELECT
     m.home_team_name                            AS team,
-    m.season,
+    m.season || '/' || SUBSTR(CAST(m.season + 1 AS TEXT), 3, 2) AS season,
     s.position                                  AS final_position,
     ROUND(AVG(m.home_score), 2)                 AS avg_home_goals
 FROM matches m
@@ -233,7 +233,7 @@ Two CTEs split each team's goals by venue, then a join combines them. The away_g
 
 ```sql
 SELECT
-    season,
+    season || '/' || SUBSTR(CAST(season + 1 AS TEXT), 3, 2) AS season,
     team_name,
     points,
     RANK() OVER (
@@ -261,7 +261,7 @@ WITH yearly_positions AS (
 )
 SELECT
     team_name,
-    season,
+    season || '/' || SUBSTR(CAST(season + 1 AS TEXT), 3, 2) AS season,
     position                                    AS current_position,
     prev_season_position,
     prev_season_position - position             AS positions_gained
