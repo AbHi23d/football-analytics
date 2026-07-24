@@ -56,7 +56,7 @@ GROUP BY home_team_name
 ORDER BY home_win_pct DESC
 LIMIT 10;
 ```
-Home advantage is not equal across clubs. The top sides tend to win well over 60% of home games and the gap to the bottom of the table is pretty significant.
+Home advantage is not equal across clubs. The top sides like Manchester City and Liverpool tend to win over 70% of their home games, and the gap to the bottom of the table is pretty significant.
 
 ## 4. Did home advantage drop during COVID?
 
@@ -80,7 +80,7 @@ WHERE status = 'FINISHED'
 GROUP BY season
 ORDER BY season;
 ```
-The 2019/20 season was played behind closed doors. I wanted to check whether the home win rate actually dropped that year compared to normal seasons. The numbers make for an interesting comparison.
+The 2020/21 season was largely played behind closed doors due to COVID-19. I wanted to check whether the home win rate actually dropped that year compared to normal seasons. The numbers are striking: home win percentage plummeted from a typical ~46% down to just 37.9% when stadiums were empty, effectively eliminating home-field advantage.
 
 ## 5. Which teams scored the most goals away from home?
 
@@ -238,7 +238,7 @@ SELECT
     points,
     RANK() OVER (
         PARTITION BY season
-        ORDER BY points DESC
+        ORDER BY points DESC, goal_difference DESC
     )   AS season_rank
 FROM standings
 ORDER BY season, season_rank;

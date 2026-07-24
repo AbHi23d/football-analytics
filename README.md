@@ -1,4 +1,4 @@
-# Premier League Analytics Platform
+# Football Analytics & Prediction
 
 [![Python](https://img.shields.io/badge/Python-3.9-blue?style=flat-square)](https://python.org)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.35+-red?style=flat-square)](https://streamlit.io)
@@ -8,7 +8,8 @@ Hi! Thanks for stopping by. This is an end-to-end data analytics and machine lea
 
 I wanted to build something that handles the entire data lifecycle: from pulling raw API data, cleaning it, and storing it in a relational database, to building predictive models and serving everything in an interactive web dashboard.
 
-> **[🚀 Check out the Live Dashboard](https://share.streamlit.io/abhidhindsa/football-analytics)**  
+> **[🚀 Check out the Live Dashboard (Streamlit)](https://premier-league-football.streamlit.app/)**  
+> **[📈 View the Live Dashboard (Tableau)](https://public.tableau.com/app/profile/abhinav.dhindsa/viz/SoccerAnalyticsDashboard_17740438732160/Dashboard2)**  
 > **[🗄️ View my SQL Portfolio (14 complex queries)](sql_analysis.md)**
 
 ---
@@ -26,7 +27,7 @@ The dashboard is split into three main tools:
 
 I built the dataset from scratch using the free tier of the Football-Data.org API. 
 - **Scope**: 10 full Premier League seasons (2015–2025)
-- **Size**: 3,800 finished matches and 34 unique clubs
+- **Size**: 3,800+ finished matches and 34 unique clubs
 - **Storage**: Cleaned and stored in a local SQLite database (`football.db`)
 
 ## 🧠 How the ML works
@@ -37,7 +38,7 @@ I wanted to keep the modeling grounded in reality. The predictions are driven by
 - Home/Away goal averages
 - Head-to-head history
 
-The model achieves around ~55% accuracy on match outcomes (Win/Draw/Loss), which is right in line with the established benchmark for predicting a highly unpredictable sport like football.
+The model achieves ~50% accuracy on match outcomes (Win/Draw/Loss), outperforming the 45% "always pick the home team" baseline — a result in line with published benchmarks for this type of prediction problem, which is inherently difficult given football's low-scoring, high-variance nature.
 
 ---
 
