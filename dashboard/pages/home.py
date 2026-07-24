@@ -114,11 +114,13 @@ st.markdown("""
 }
 .pg-stat {
     flex: 1;
-    text-align: center;
+    padding: 0 2rem 0 0;
     border-right: 1px solid #e8e8e8;
+    margin-right: 2rem;
 }
 .pg-stat:last-child {
     border-right: none;
+    margin-right: 0;
 }
 .pg-stat-number {
     font-size: 2.2rem;
