@@ -112,7 +112,11 @@ try:
                     with col2:
                         st.subheader("Model Confidence")
                         conf_pct = prediction['confidence'] * 100
-                        st.metric(label="Confidence Level", value=f"{conf_pct:.0f}%")
+                        st.metric(
+                            label="Confidence Level", 
+                            value=f"{conf_pct:.0f}%",
+                            help="This reflects the model's statistical certainty for this specific fixture, not its overall historical accuracy."
+                        )
 
                     st.divider()
 

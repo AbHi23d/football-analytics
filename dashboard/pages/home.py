@@ -32,7 +32,7 @@ with open(logo_path, "rb") as f:
 # Native Hero Title inside Columns
 c1, c2 = st.columns([6, 1])
 with c1:
-    st.title("Football Analytics")
+    st.title("Football Analytics & Prediction")
     st.markdown("2015 – 2025 · English Premier League · Built in Python & SQL")
 with c2:
     st.markdown(f'<div style="display: flex; justify-content: center; align-items: center; height: 100%; margin-top: 3.5rem;"><img src="data:image/svg+xml;base64,{logo_b64}" style="width: 130px;"></div>', unsafe_allow_html=True)
@@ -43,7 +43,7 @@ st.write("")
 st.markdown(f"""
 <div class="pg-stat-strip">
     <div class="pg-stat">
-        <div class="pg-stat-number">{match_count:,}</div>
+        <div class="pg-stat-number">{match_count:,}+</div>
         <div class="pg-stat-label">Total matches</div>
     </div>
     <div class="pg-stat">
@@ -93,7 +93,7 @@ with col3:
     <div class="pg-card">
         <div class="pg-card-label">Predictive</div>
         <div class="pg-card-title">Match Predictor</div>
-        <div class="pg-card-desc">Select any two clubs to get a probability forecast powered by our machine learning ensemble.</div>
+        <div class="pg-card-desc">Select any two clubs to get a probability forecast powered by my machine learning ensemble.</div>
     </div>
     """, unsafe_allow_html=True)
     st.write("")

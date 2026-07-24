@@ -51,7 +51,7 @@ try:
         c2.metric("Top Attack", top_attack['team_name'], f"{top_attack['goals_for']} GF")
 
         top_def = standings_df.nsmallest(1, 'goals_against').iloc[0]
-        c3.metric("Best Defence", top_def['team_name'], f"{top_def['goals_against']} GA", delta_color="inverse")
+        c3.metric("Best Defence", top_def['team_name'], f"-{top_def['goals_against']} GA", delta_color="inverse")
 
         st.write("")
         
