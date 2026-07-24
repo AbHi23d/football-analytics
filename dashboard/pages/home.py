@@ -32,7 +32,7 @@ with open(logo_path, "rb") as f:
 # Native Hero Title inside Columns
 c1, c2 = st.columns([6, 1])
 with c1:
-    st.title("Premier League Analytics")
+    st.title("Football Analytics")
     st.markdown("2015 – 2025 · English Premier League · Built in Python & SQL")
 with c2:
     st.markdown(f'<div style="display: flex; justify-content: center; align-items: center; height: 100%; margin-top: 3.5rem;"><img src="data:image/svg+xml;base64,{logo_b64}" style="width: 130px;"></div>', unsafe_allow_html=True)
